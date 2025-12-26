@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Busca | OPERA²</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Coluna Esquerda - Formulário -->
+        <div class="panel form-panel">
+            <div class="header">
+                <h1>🔍 Gerador de Busca</h1>
+                <span class="subtitle">OPERA²</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="product">PRODUTO *</label>
+                <textarea id="product" placeholder="Nome, EAN ou SKU do produto..." rows="3"></textarea>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="brand">MARCA</label>
+                    <select id="brand">
+                        <option value="Qualquer">Qualquer</option>
+                        <option value="CeraVe">CeraVe</option>
+                        <option value="Vichy">Vichy</option>
+                        <option value="La Roche-Posay">La Roche-Posay</option>
+                        <option value="SkinCeuticals">SkinCeuticals</option>
+                        <option value="ACD Multibrand">ACD Multibrand</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mediaType">TIPO</label>
+                    <select id="mediaType">
+                        <option value="Qualquer">Qualquer</option>
+                        <option value="Image">Image</option>
+                        <option value="Video">Video</option>
+                        <option value="Acrobat PDF">Acrobat PDF</option>
+                        <option value="Layout">Layout</option>
+                        <option value="Audio">Audio</option>
+                        <option value="MS Office">MS Office</option>
+                        <option value="Video Subtitles">Video Subtitles</option>
+                        <option value="Text">Text</option>
+                        <option value="HTML">HTML</option>
+                        <option value="3D">3D</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="language">IDIOMA</label>
+                <select id="language">
+                    <option value="Qualquer">Qualquer</option>
+                    <option value="Portuguese (Brazil)">Portuguese (Brazil)</option>
+                    <option value="English">English</option>
+                    <option value="Spanish (Mexico)">Spanish (Mexico)</option>
+                    <option value="Spanish (Argentina)">Spanish (Argentina)</option>
+                    <option value="Spanish (Uruguay)">Spanish (Uruguay)</option>
+                    <option value="Spanish (Colombia)">Spanish (Colombia)</option>
+                    <option value="Undefined">Undefined</option>
+                </select>
+            </div>
+            
+            <div class="button-row">
+                <button id="generateBtn" class="btn-primary">Gerar Termos</button>
+                <button id="clearBtn" class="btn-secondary">⟲</button>
+            </div>
+            
+            <div class="status" id="status">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">Verificando IA...</span>
+            </div>
+            
+            <!-- Config API Key (hidden by default) -->
+            <div class="api-config" id="apiConfig">
+                <label for="apiKey">🔑 API KEY GEMINI</label>
+                <input type="password" id="apiKey" placeholder="Cole sua chave aqui...">
+                <button id="saveApiKey" class="btn-small">Salvar</button>
+            </div>
+        </div>
+        
+        <!-- Coluna Direita - Resultados -->
+        <div class="panel results-panel">
+            <h2>Resultados</h2>
+            
+            <div id="results">
+                <div class="empty-state">
+                    <div class="empty-icon">✨</div>
+                    <div class="empty-title">Pronto para otimizar</div>
+                    <div class="empty-text">Preencha o produto e clique em Gerar Termos</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast notification -->
+    <div id="toast" class="toast"></div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
